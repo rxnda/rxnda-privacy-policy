@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+console.log(JSON.stringify(
+  {
+    updated: new Date().toISOString(),
+    commonform: require('./privacy'),
+    directions: require('./mappings').map(function (mapping) {
+      return {
+        blank: mapping.path,
+        value: require('./blanks')[mapping.identifier]
+      }
+    })
+  }
+))
